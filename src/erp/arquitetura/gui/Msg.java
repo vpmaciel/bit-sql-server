@@ -8,7 +8,7 @@ import erp.sistema.main.SobrePainel;
 public final class Msg {
 
     public static void avisoFecharSistema() {
-	JOptionPane.showMessageDialog(null, "O sistema será fechado !", "Erro", JOptionPane.ERROR_MESSAGE);
+	JOptionPane.showMessageDialog(null, "System will be closed !", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void avisoCampoObrigatorio(Object campo) {
@@ -39,11 +39,11 @@ public final class Msg {
     }
 
     public static void erroGeral() {
-	JOptionPane.showMessageDialog(null, "Foi encontrado um erro !", "Erro", JOptionPane.ERROR_MESSAGE);
+	JOptionPane.showMessageDialog(null, "Found a error !", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void erroLookAndFeel() {
-	JOptionPane.showMessageDialog(null, "Não foi possível utilizar Look and Feel !", "Erro",
+	JOptionPane.showMessageDialog(null, "Look and Feel error !", "Erro",
 		JOptionPane.ERROR_MESSAGE);
     }
 

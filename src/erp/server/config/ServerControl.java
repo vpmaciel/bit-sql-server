@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
 
 import javax.swing.JOptionPane;
 
@@ -18,7 +17,7 @@ final class ServerControl {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 	    try {
-		getDatabaseJanCad().setVisible(false);
+		getServerJan().setVisible(false);
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
@@ -29,29 +28,17 @@ final class ServerControl {
 
 	@Override
 	public void windowActivated(WindowEvent e) {
-	    getDatabaseJanCad().reiniciarGui();
+	    getServerJan().reiniciarGui();
 	}
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-	    getDatabaseJanCad().setVisible(false);
+	    getServerJan().setVisible(false);
 	}
 
 	@Override
 	public void windowOpened(WindowEvent e) {
 	    server = new Server();
-	}
-    }
-
-    public class Home implements ActionListener {
-
-	@Override
-	public void actionPerformed(ActionEvent actionEvent) {
-	    try {
-		MainController.mostrarFrame(MainController.getMainJan());
-	    } catch (Exception e) {
-		e.printStackTrace();
-	    }
 	}
     }
 
@@ -65,37 +52,37 @@ final class ServerControl {
 
 		int mensagem = Msg.confirmarConectarServidor();
 
-		if (((getDBPainelCad().getGuiServidor().getText()) == null)
-			|| (getDBPainelCad().getGuiServidor().getText().length() == 0)) {
-		    getDBPainelCad().getGuiServidor().requestFocus();
+		if (((getServerPainelCad().getGuiServidor().getText()) == null)
+			|| (getServerPainelCad().getGuiServidor().getText().length() == 0)) {
+		    getServerPainelCad().getGuiServidor().requestFocus();
 		    Msg.avisoCampoObrigatorio("SERVER");
 		    return;
 		}
 		
-		if (((getDBPainelCad().getGuiPorta().getText()) == null)
-			|| (getDBPainelCad().getGuiPorta().getText().length() == 0)) {
-		    getDBPainelCad().getGuiPorta().requestFocus();
+		if (((getServerPainelCad().getGuiPorta().getText()) == null)
+			|| (getServerPainelCad().getGuiPorta().getText().length() == 0)) {
+		    getServerPainelCad().getGuiPorta().requestFocus();
 		    Msg.avisoCampoObrigatorio("PORT NUMBER");
 		    return;
 		}
 		
-		if (((getDBPainelCad().getGuiDatabase().getText()) == null)
-			|| (getDBPainelCad().getGuiDatabase().getText().length() == 0)) {
-		    getDBPainelCad().getGuiDatabase().requestFocus();
+		if (((getServerPainelCad().getGuiDatabase().getText()) == null)
+			|| (getServerPainelCad().getGuiDatabase().getText().length() == 0)) {
+		    getServerPainelCad().getGuiDatabase().requestFocus();
 		    Msg.avisoCampoObrigatorio("DATABASE");
 		    return;
 		}
 		
-		if (((getDBPainelCad().getGuiUsuario().getText()) == null)
-			|| (getDBPainelCad().getGuiUsuario().getText().length() == 0)) {
-		    getDBPainelCad().getGuiUsuario().requestFocus();
+		if (((getServerPainelCad().getGuiUsuario().getText()) == null)
+			|| (getServerPainelCad().getGuiUsuario().getText().length() == 0)) {
+		    getServerPainelCad().getGuiUsuario().requestFocus();
 		    Msg.avisoCampoObrigatorio("USER");
 		    return;
 		}
 		
-		if (((getDBPainelCad().getGuiSenha().getText()) == null)
-			|| (getDBPainelCad().getGuiSenha().getText().length() == 0)) {
-		    getDBPainelCad().getGuiSenha().requestFocus();
+		if (((getServerPainelCad().getGuiSenha().getText()) == null)
+			|| (getServerPainelCad().getGuiSenha().getText().length() == 0)) {
+		    getServerPainelCad().getGuiSenha().requestFocus();
 		    Msg.avisoCampoObrigatorio("PASSWORD");
 		    return;
 		}
@@ -105,12 +92,12 @@ final class ServerControl {
 		if (mensagem == JOptionPane.YES_OPTION) {
 		    atualizarObjeto();
 		    Msg.sucessoConectarServidor();
-		    getDBPainelCad().getGuiDatabase().requestFocus();
+		    getServerPainelCad().getGuiDatabase().requestFocus();
 		}
 
-		setConnection(Conexao.conectarSQLAuth(server.getServidor(),server.getPorta(), server.getDatabaseName(), server.getUsuario(), server.getSenha()));
+		Conexao.conectarSQLAuth(server.getServidor(),server.getPorta(), server.getDatabaseName(), server.getUsuario(), server.getSenha());
 		Msg.sucessoConectarServidor();
-
+		getServerJan().setVisible(false);
 	    } catch (Exception e) {
 		e.printStackTrace();
 		Msg.erroConectarServidor();
@@ -128,34 +115,35 @@ final class ServerControl {
 
 		int mensagem = Msg.confirmarConectarServidor();
 
-		if (((getDBPainelCad().getGuiServidor().getText()) == null)
-			|| (getDBPainelCad().getGuiServidor().getText().length() == 0)) {
-		    getDBPainelCad().getGuiServidor().requestFocus();
-		    Msg.avisoCampoObrigatorio("SERVIDOR");
+		if (((getServerPainelCad().getGuiServidor().getText()) == null)
+			|| (getServerPainelCad().getGuiServidor().getText().length() == 0)) {
+		    getServerPainelCad().getGuiServidor().requestFocus();
+		    Msg.avisoCampoObrigatorio("SERVER");
 		    return;
 		}
 		
-		if (((getDBPainelCad().getGuiPorta().getText()) == null)
-			|| (getDBPainelCad().getGuiPorta().getText().length() == 0)) {
-		    getDBPainelCad().getGuiPorta().requestFocus();
-		    Msg.avisoCampoObrigatorio("PORTA");
+		if (((getServerPainelCad().getGuiPorta().getText()) == null)
+			|| (getServerPainelCad().getGuiPorta().getText().length() == 0)) {
+		    getServerPainelCad().getGuiPorta().requestFocus();
+		    Msg.avisoCampoObrigatorio("PORT NUMBER");
 		    return;
 		}
 		
-		if (((getDBPainelCad().getGuiDatabase().getText()) == null)
-			|| (getDBPainelCad().getGuiDatabase().getText().length() == 0)) {
-		    getDBPainelCad().getGuiDatabase().requestFocus();
+		if (((getServerPainelCad().getGuiDatabase().getText()) == null)
+			|| (getServerPainelCad().getGuiDatabase().getText().length() == 0)) {
+		    getServerPainelCad().getGuiDatabase().requestFocus();
 		    Msg.avisoCampoObrigatorio("DATABASE");
 		    return;
 		}
 
 		if (mensagem == JOptionPane.YES_OPTION) {
 		    atualizarObjeto();
-		    getDBPainelCad().getGuiDatabase().requestFocus();
+		    getServerPainelCad().getGuiDatabase().requestFocus();
 		}
 
-		setConnection(Conexao.conectarWindowsAuth(server.getServidor(),server.getPorta(), server.getDatabaseName()));
+		Conexao.conectarWindowsAuth(server.getServidor(),server.getPorta(), server.getDatabaseName());
 		Msg.sucessoConectarServidor();		
+		getServerJan().setVisible(false);
 
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -164,22 +152,20 @@ final class ServerControl {
 	}
     }
 
-    private Connection connection;
     private Server server;
     
-    ServerControl() {
-	setConnection(null);
+    ServerControl() {	
     }    
 
     public void atualizarGui() {
 	if (server == null) {
 	    return;
 	}
-	getDBPainelCad().getGuiSenha().setText(server.getSenha());
-	getDBPainelCad().getGuiUsuario().setText(server.getUsuario());
-	getDBPainelCad().getGuiDatabase().setText(server.getDatabaseName());
-	getDBPainelCad().getGuiPorta().setText(server.getPorta());
-	getDBPainelCad().getGuiServidor().setText(server.getServidor());
+	getServerPainelCad().getGuiSenha().setText(server.getSenha());
+	getServerPainelCad().getGuiUsuario().setText(server.getUsuario());
+	getServerPainelCad().getGuiDatabase().setText(server.getDatabaseName());
+	getServerPainelCad().getGuiPorta().setText(server.getPorta());
+	getServerPainelCad().getGuiServidor().setText(server.getServidor());
 
     }
 
@@ -187,35 +173,27 @@ final class ServerControl {
 	if (server == null) {
 	    server = new Server();
 	}
-	server.setSenha(getDBPainelCad().getGuiSenha().getText());
-	server.setPorta(getDBPainelCad().getGuiPorta().getText());
-	server.setServidor(getDBPainelCad().getGuiServidor().getText());
-	server.setUsuario(getDBPainelCad().getGuiUsuario().getText());
-	server.setDatabaseName(getDBPainelCad().getGuiDatabase().getText());
+	server.setSenha(getServerPainelCad().getGuiSenha().getText());
+	server.setPorta(getServerPainelCad().getGuiPorta().getText());
+	server.setServidor(getServerPainelCad().getGuiServidor().getText());
+	server.setUsuario(getServerPainelCad().getGuiUsuario().getText());
+	server.setDatabaseName(getServerPainelCad().getGuiDatabase().getText());
 
     }
 
-    public ServerJan getDatabaseJanCad() {
-	return MainController.getUsuarioJan();
+    public ServerJan getServerJan() {
+	return MainController.getServerJan();
     }
 
-    public ServerPainelCad getDBPainelCad() {
-	return MainController.getUsuarioJan().getUsuarioPainelCad();
+    public ServerPainelCad getServerPainelCad() {
+	return MainController.getServerJan().getServerPainelCad();
     }
 
-    public Server getConta() {
+    public Server getServer() {
 	return server;
     }
 
-    public void setUsuario(Server usuario) {
-	this.server = usuario;
-    }
-
-    public Connection getConnection() {
-	return connection;
-    }
-
-    public void setConnection(Connection connection) {
-	this.connection = connection;
+    public void setServer(Server server) {
+	this.server = server;
     }
 }

@@ -50,11 +50,6 @@ public final class MainController {
 		return;
 	    }
 
-	    if (actionEvent.getSource() == mainJan.getMenuItemArquivoSair()) {
-		if (Msg.confirmarSairDoSistema() == 0) {
-		    System.exit(0);
-		}
-	    }
 	    if (actionEvent.getSource() == mainJan.getMenuItemArquivoConectar()) {
 		mostrarFrame(serverJan);
 	    }
@@ -85,7 +80,7 @@ public final class MainController {
 	return dBStateJan;
     }
 
-    public static ServerJan getUsuarioJan() { //
+    public static ServerJan getServerJan() { //
 	return serverJan;
     }
 

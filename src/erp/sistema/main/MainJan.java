@@ -32,7 +32,6 @@ public class MainJan extends JFrame {
     private JMenu menuControle;
     private JMenuItem menuItemAjudaSobreSistema;
     private JMenuItem menuItemArquivoConectar;
-    private JMenuItem menuItemArquivoSair;
     private JMenuItem menuItemControleCliente;
     private JMenuItem menuItemControleVeiculo;
     private JMenuItem menuItemControleServico;
@@ -63,10 +62,6 @@ public class MainJan extends JFrame {
 	return menuItemArquivoConectar;
     }
 
-    public JMenuItem getMenuItemArquivoSair() {
-	return menuItemArquivoSair;
-    }
-
     public JMenuItem getMenuItemControleCliente() {
 	return menuItemControleCliente;
     }
@@ -86,7 +81,6 @@ public class MainJan extends JFrame {
     public void iniciarController() {
 	mainController = MainController.getInstance(this);
 	addWindowListener(mainController.new FrameGerenteEventos());
-	menuItemArquivoSair.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemArquivoConectar.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemControleVeiculo.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemControleDBState.addActionListener(mainController.new MenuGerenteEventos());
@@ -110,10 +104,6 @@ public class MainJan extends JFrame {
 	menuItemArquivoConectar = new JMenuItem("Connect Server");
 
 	menuArquivo.add(menuItemArquivoConectar);
-
-	menuItemArquivoSair = new JMenuItem("Exit");
-
-	menuArquivo.add(menuItemArquivoSair);
 
 	menuBar.add(menuArquivo);
 

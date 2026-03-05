@@ -52,7 +52,7 @@ public final class ServerJan extends JFrame implements Gui {
 	return configuracaoGui;
     }
 
-    public ServerPainelCad getUsuarioPainelCad() {
+    public ServerPainelCad getServerPainelCad() {
 	return serverPainelCad;
     }
 

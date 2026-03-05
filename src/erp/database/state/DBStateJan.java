@@ -69,7 +69,7 @@ public final class DBStateJan extends JFrame {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-	    //getPedidoPlacaJanCad().setVisible(false);
+	    setVisible(false);
 	}
 
 	@Override
