@@ -34,7 +34,7 @@ public class MainJan extends JFrame {
     private JMenuItem menuItemArquivoConectar;
     private JMenuItem menuItemControleCliente;
     private JMenuItem menuItemControleVeiculo;
-    private JMenuItem menuItemControleServico;
+    private JMenuItem menuItemControlesSQLVersion;
     private JMenuItem menuItemControleDBState;
 
     public MainJan() {
@@ -66,12 +66,12 @@ public class MainJan extends JFrame {
 	return menuItemControleCliente;
     }
 
-    public JMenuItem getMenuItemControlePedidoPlaca() {
+    public JMenuItem getMenuItemControleDBState() {
 	return menuItemControleDBState;
     }
 
-    public JMenuItem getMenuItemControleServico() {
-	return menuItemControleServico;
+    public JMenuItem getMenuItemControleSQLVersion() {
+	return menuItemControlesSQLVersion;
     }
 
     public JMenuItem getMenuItemControleVeiculo() {
@@ -84,7 +84,7 @@ public class MainJan extends JFrame {
 	menuItemArquivoConectar.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemControleVeiculo.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemControleDBState.addActionListener(mainController.new MenuGerenteEventos());
-	menuItemControleServico.addActionListener(mainController.new MenuGerenteEventos());
+	menuItemControlesSQLVersion.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemControleCliente.addActionListener(mainController.new MenuGerenteEventos());
 	menuItemAjudaSobreSistema.addActionListener(mainController.new MenuGerenteEventos());
     }
@@ -113,8 +113,8 @@ public class MainJan extends JFrame {
 	menuItemControleDBState = new JMenuItem("DB State");
 	menuControle.add(menuItemControleDBState);
 
-	menuItemControleServico = new JMenuItem("Serviço");
-	menuControle.add(menuItemControleServico);
+	menuItemControlesSQLVersion = new JMenuItem("SQL Version");
+	menuControle.add(menuItemControlesSQLVersion);
 
 	menuItemControleVeiculo = new JMenuItem("Veículo");
 	menuControle.add(menuItemControleVeiculo);

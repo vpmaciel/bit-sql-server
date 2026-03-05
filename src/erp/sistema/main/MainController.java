@@ -12,6 +12,7 @@ import erp.arquitetura.gui.Msg;
 import erp.database.state.DBStateJan;
 import erp.server.config.Conexao;
 import erp.server.config.ServerJan;
+import erp.sql.version.SQLVersionJan;
 
 
 public final class MainController {
@@ -53,8 +54,12 @@ public final class MainController {
 	    if (actionEvent.getSource() == mainJan.getMenuItemArquivoConectar()) {
 		mostrarFrame(serverJan);
 	    }
-	    if (actionEvent.getSource() == mainJan.getMenuItemControlePedidoPlaca()) {
+	    if (actionEvent.getSource() == mainJan.getMenuItemControleDBState()) {
 		mostrarFrame(dBStateJan);
+	    }
+	    
+	    if (actionEvent.getSource() == mainJan.getMenuItemControleSQLVersion()) {
+		mostrarFrame(sQLVersionJan);
 	    }
 	}
     }
@@ -62,6 +67,7 @@ public final class MainController {
     private static MainController mainControl;
     private static MainJan mainJan;
     private static DBStateJan dBStateJan;
+    private static SQLVersionJan sQLVersionJan;
     private static ServerJan serverJan;
 
 
@@ -105,6 +111,9 @@ public final class MainController {
     private void criarFrames() {
 	dBStateJan = new DBStateJan();
 	criarFrame(dBStateJan);
+	
+	sQLVersionJan = new SQLVersionJan();
+	criarFrame(sQLVersionJan);
 
 	serverJan = new ServerJan();
 	criarFrame(serverJan);

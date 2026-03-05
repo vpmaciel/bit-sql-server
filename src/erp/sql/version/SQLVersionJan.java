@@ -1,7 +1,7 @@
-package erp.database.state;
+package erp.sql.version;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -14,13 +14,13 @@ import erp.arquitetura.Sis;
 import erp.arquitetura.gui.Imagem;
 
 @SuppressWarnings("serial")
-public final class DBStateJan extends JFrame {
+public final class SQLVersionJan extends JFrame {
 
     
     private JTabbedPane tabbedPane;
-    private DBStatePainelPesq dBStatePainelPesq;
+    private SQLVersionPainelPesq sQLVersionPainelPesq;
 
-    public DBStateJan() {
+    public SQLVersionJan() {
 	iniciarLayout();
 	iniciarGui();
 	iniciarControlador();
@@ -30,8 +30,8 @@ public final class DBStateJan extends JFrame {
 	addWindowListener(new Frame());
     }
 
-    public DBStatePainelPesq getPedidoPlacaPainelPesq() {
-	return dBStatePainelPesq;
+    public SQLVersionPainelPesq getPedidoPlacaPainelPesq() {
+	return sQLVersionPainelPesq;
     }
 
     public JTabbedPane getTabbedPane() {
@@ -41,11 +41,11 @@ public final class DBStateJan extends JFrame {
     
     
     public void iniciarGui() {
-	setTitle(Sis.getNomeSistema() + " - " + "Database State");
+	setTitle(Sis.getNomeSistema() + " - " + "SQL Version");
 	setIconImage(Imagem.getLogoTipoImage());
 	tabbedPane = new JTabbedPane();	
-	dBStatePainelPesq = new DBStatePainelPesq();
-	tabbedPane.addTab("Data", dBStatePainelPesq);	
+	sQLVersionPainelPesq = new SQLVersionPainelPesq();
+	tabbedPane.addTab("Data", sQLVersionPainelPesq);	
 	setContentPane(tabbedPane);
 	pack();
 
@@ -63,7 +63,7 @@ public final class DBStateJan extends JFrame {
 
 	@Override
 	public void windowActivated(WindowEvent e) {
-	    dBStatePainelPesq.atualizar();
+	    sQLVersionPainelPesq.atualizar();
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public final class DBStateJan extends JFrame {
 
 	@Override
 	public void windowOpened(WindowEvent e) {
-	    dBStatePainelPesq.atualizar();
+	    sQLVersionPainelPesq.atualizar();
 	}
     }
     
